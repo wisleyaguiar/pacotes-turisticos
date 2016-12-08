@@ -1,6 +1,7 @@
 package br.com.aguiarweb.pacotesturisticos.dominio;
 
 import java.io.Serializable;
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -149,6 +150,24 @@ public class Pacote implements Serializable {
 		} else if (!codPacote.equals(other.codPacote))
 			return false;
 		return true;
+	}
+	
+	public BigDecimal precoTotal(){
+		BigDecimal total = new BigDecimal("0.00");
+		for(Item i : itens){
+			total = total.add(i.getPasseio().getPreco());
+		}
+		BigDecimal totalDiarias = hotel.getDiaria().multiply(new BigDecimal(this.getDiarias()));
+		total = total.add(totalDiarias);
+		return total;
+	}
+	
+	public BigDecimal precoPasseios(){
+		BigDecimal soma = new BigDecimal("0.00");
+		for(Item i : itens){
+			soma = soma.add(i.getPasseio().getPreco());
+		}
+		return soma;
 	}
 	
 }
