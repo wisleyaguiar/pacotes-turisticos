@@ -13,6 +13,7 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
@@ -27,7 +28,10 @@ public class Cliente implements Serializable {
 	private String email;
 	private String telefone;
 	private String cpf;
+	
+	@JsonFormat(pattern = "dd/MM/yyyy")
 	private Date nascimento;
+	
 	private BigDecimal rendaMensal;
 	
 	@OneToMany(mappedBy="cliente")
