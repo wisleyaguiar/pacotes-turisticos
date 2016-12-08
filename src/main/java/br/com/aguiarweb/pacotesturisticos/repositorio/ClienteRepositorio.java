@@ -6,6 +6,6 @@ import org.springframework.stereotype.Repository;
 import br.com.aguiarweb.pacotesturisticos.dominio.Cliente;
 
 @Repository
-public interface ClienteRepositorio extends JpaRepository<Cliente, Integer> {
+public interface ClienteRepositorio extends JpaRepository<Cliente, Integer>, ClienteRepositorioCustom {
 
 }
